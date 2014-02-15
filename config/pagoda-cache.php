@@ -1,0 +1,1 @@
+<?php return array( $_SERVER["CACHE1_HOST"] . ':' . $_SERVER["CACHE1_PORT"] ); ?>

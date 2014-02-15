@@ -1,0 +1,33 @@
+global:
+  env:
+    - ENV: production
+web1: 
+  name: wordpress-web
+  shared_writable_dirs:
+    - content/uploads/
+    - wp-content/cache/
+    - wp-content/w3tc-config/
+  cron:
+    - "*/15 * * * *": "php wordpress/wp-cron.php"
+  php_version: 5.4.14
+  php_extensions:
+    - mysql
+    - mysqli
+    - memcache
+  php_upload_max_filesize: "8M"
+  php_newrelic_framework: wordpress
+  after_build:
+    - "curl https://api.wordpress.org/secret-key/1.1/salt >> config/salts.php"
+    - "mv config/pagoda-db.php config/db.php"
+    - "mv config/pagoda-cache.php config/memcached.php"
+    - "mv wordpress/wp-content/themes/twentyten content/themes/twentyten"
+    - "mv wordpress/wp-content/themes/twentyeleven content/themes/twentyeleven"
+    - "mv wordpress/wp-content/themes/twentytwelve content/themes/twentytwelve"
+    - "mv wordpress/wp-content/themes/twentythirteen content/themes/twentythirteen"
+    - "mv wordpress/wp-content/themes/twentyfourteen content/themes/twentyfourteen"
+db1:
+  name: wordpress-db
+  type: mysql
+cache1:
+  name: wordpress-cache
+  type: memcached

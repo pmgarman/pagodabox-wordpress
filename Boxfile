@@ -18,6 +18,7 @@ web1:
   php_newrelic_framework: wordpress
   after_build:
     - "curl https://api.wordpress.org/secret-key/1.1/salt >> config/salts.php"
+    - "mv content/dropins/* content/ && rm -r content/dropins"
     - "mv config/pagoda-db.php config/db.php"
     - "mv config/pagoda-cache.php config/memcached.php"
     - "mv wordpress/wp-content/themes/twentyten content/themes/twentyten"

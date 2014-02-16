@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Memcached
 Description: Memcached backend for the WP Object Cache.

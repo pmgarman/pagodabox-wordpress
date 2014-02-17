@@ -5,8 +5,8 @@ web1:
   name: wordpress-web
   shared_writable_dirs:
     - content/uploads/
-    - wp-content/cache/
-    - wp-content/w3tc-config/
+    - content/cache/
+    - content/w3tc-config/
   cron:
     - "*/15 * * * *": "php wordpress/wp-cron.php"
   php_version: 5.4.14
